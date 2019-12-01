@@ -8,7 +8,7 @@ module.exports = function(passport) {
             User.findOne({ email: email })
                 .then(user => {
                     if(!user) {
-                        return done(null, false, { msg: 'Email is not registered.' })
+                        return done(null, false, { message: 'Email is not registered.' })
                     }
 
                     bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -19,7 +19,7 @@ module.exports = function(passport) {
                         if(isMatch) {
                             return done(null, user);
                         } else {
-                            return done(null, false, { msg: 'Incorrect password.' })
+                            return done(null, false, { message: 'Incorrect password.' })
                         }
                     })
                 })
