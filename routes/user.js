@@ -36,6 +36,7 @@ router.post('/register', (req, res) => {
             password2
         })
     } else {
+        // Save user
         User.findOne({ email: email })
             .then(user => {
                 if(user) {

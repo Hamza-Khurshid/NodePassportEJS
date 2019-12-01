@@ -9,12 +9,10 @@ var app = express();
 // DB Config
 const db = require('./config/keys').MongoURI;
 
-
 // Connect Mongose
 mongoose.connect(db, { useNewUrlParser: true })
     .then(() => console.log("MongoDB connected successfully..."))
     .catch(err => console.log("Mongo connection error: ", err))
-
 
 // EJS
 app.use(expressLayouts);
@@ -39,7 +37,6 @@ app.use((req, res, next) => {
     res.locals.error_msg = req.flash('error_msg');
     next();
 })
-
 
 // Routes
 app.use('/', require('./routes/index'));
